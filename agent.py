@@ -1,28 +1,9 @@
-"""
-Agente de IA simples usando smolagents (Hugging Face Agents Course - Unidade 1).
-
-Fluxo Thought -> Action -> Observation (o "loop" de um agente):
-  1. Thought: o LLM recebe a pergunta + a lista de tools disponíveis e
-     "pensa" em texto sobre o que fazer a seguir.
-  2. Action: no CodeAgent, a Action é sempre um trecho de código Python que
-     o próprio modelo escreve (podendo chamar as tools abaixo como funções
-     normais de Python).
-  3. Observation: o smolagents executa esse código de verdade num
-     interpretador Python, e o que for impresso/retornado volta para o
-     modelo como "observação".
-  Esse ciclo se repete (é um agente "multi-step") até o modelo chamar
-  final_answer(...) dentro do código, ou até atingir max_steps.
-"""
-
 from datetime import datetime
 
 import pytz
 from dotenv import load_dotenv
 from smolagents import CodeAgent, InferenceClientModel, tool
 
-# Lê o arquivo .env e injeta suas variáveis (HF_TOKEN=...) no ambiente do
-# processo. Precisa rodar ANTES de criar o InferenceClientModel, pois ele lê
-# o token de os.environ["HF_TOKEN"] automaticamente.
 load_dotenv()
 
 
