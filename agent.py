@@ -2,7 +2,13 @@ from datetime import datetime
 
 import pytz
 from dotenv import load_dotenv
-from smolagents import CodeAgent, DuckDuckGoSearchTool, InferenceClientModel, tool
+from smolagents import (
+    CodeAgent,
+    DuckDuckGoSearchTool,
+    InferenceClientModel,
+    VisitWebpageTool,
+    tool,
+)
 
 load_dotenv()
 
@@ -71,7 +77,12 @@ model = InferenceClientModel(model_id="Qwen/Qwen2.5-Coder-32B-Instruct")
 # original, o histórico de passos anteriores e a descrição de cada tool
 # (gerada automaticamente a partir dos decorators @tool acima).
 agent = CodeAgent(
-    tools=[get_current_time_in_timezone, convert_temperature, DuckDuckGoSearchTool()],
+    tools=[
+        get_current_time_in_timezone,
+        convert_temperature,
+        DuckDuckGoSearchTool(),
+        VisitWebpageTool(),
+    ],
     model=model,
     # Limita quantos ciclos Thought-Action-Observation o agente pode fazer
     # antes de ser forçado a responder — evita loops infinitos.
