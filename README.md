@@ -10,7 +10,6 @@ biblioteca [smolagents](https://github.com/huggingface/smolagents), rodando
   pergunta de teste no terminal.
 - `agent_ui.py` — mesmo agente, exposto numa interface de chat web (Gradio).
 - `requirements.txt` — dependências do projeto.
-- `.env.example` — modelo do arquivo de configuração do token.
 
 ## 1. Criar e ativar o ambiente virtual
 
@@ -44,14 +43,8 @@ pip install -r requirements.txt
 
 ## 3. Configurar o `.env` com o seu token
 
-Copie o arquivo de exemplo e edite com o seu token da Hugging Face
+Crie um arquivo `.env` na raiz do projeto com o seu token da Hugging Face
 (`https://huggingface.co/settings/tokens`):
-
-```powershell
-copy .env.example .env
-```
-
-Depois abra `.env` e substitua `seu_token_aqui` pelo seu token real:
 
 ```
 HF_TOKEN=hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
