@@ -1,0 +1,5 @@
+smolagents
+huggingface_hub
+pytz
+python-dotenv
+gradio
